@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Degree;
+use App\Job;
+use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
-class DegreeController extends Controller
+class JobController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +27,8 @@ class DegreeController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.job.create', compact('categories'));
     }
 
     /**
@@ -35,16 +39,33 @@ class DegreeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'logo' => 'image'
+        ]);
+
+        $job = $request->all();
+        $job['user_id'] = Auth::id();
+        $job['status'] = 1;
+
+        if ($request->has('logo')) {
+            $job['logo'] = $request->logo->store('job/logo');
+        }
+
+        Job::create($job);
+
+        return redirect()->back()->with('success', 'Job Added Successfully');
+
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Degree  $degree
+     * @param  \App\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function show(Degree $degree)
+    public function show(Job $job)
     {
         //
     }
@@ -52,10 +73,10 @@ class DegreeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Degree  $degree
+     * @param  \App\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function edit(Degree $degree)
+    public function edit(Job $job)
     {
         //
     }
@@ -64,10 +85,10 @@ class DegreeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Degree  $degree
+     * @param  \App\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Degree $degree)
+    public function update(Request $request, Job $job)
     {
         //
     }
@@ -75,10 +96,10 @@ class DegreeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Degree  $degree
+     * @param  \App\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Degree $degree)
+    public function destroy(Job $job)
     {
         //
     }

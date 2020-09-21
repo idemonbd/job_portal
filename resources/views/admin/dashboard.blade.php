@@ -1,5 +1,5 @@
-@extends('layouts.dashboard')
-@section('admin-dashboard')
+@extends('layouts.admin')
+@section('content')
 <!-- Start Header Banner Area -->
 <div class="jobs_banner_area">
 	<div class="container">
@@ -14,7 +14,7 @@
 		<div class="row no-gutters">
 			<div class="col-md-3">
 				<div class="view_left">
-					@include('users.admin.partials.sidebar')
+					@include('admin.partials.sidebar')
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -31,34 +31,34 @@
 										<div class="single_categories">
 											<div class="cat_icon icon_img">
 												<!-- <i class="fas fa-home"></i> -->
-												<img src="admin/assets/images/bank.png" alt="">
+												<img src="{{ asset('/public') }}/admin/assets/images/bank.png" alt="">
 											</div>
 											<p>Total Job</p>
-											<span>(4286 jobs)</span>
+											<span>({{ $count['job'] }})</span>
 										</div>
 										<div class="single_categories">
 											<div class="cat_icon icon_img">
 												<!-- <i class="fas fa-home"></i> -->
-												<img src="admin/assets/images/bank.png" alt="">
+												<img src="{{ asset('/public') }}/admin/assets/images/bank.png" alt="">
 											</div>
 											<p>Total Employer</p>
-											<span>(4286 jobs)</span>
+											<span>({{ $count['employer'] }})</span>
 										</div>
 										<div class="single_categories">
 											<div class="cat_icon icon_img">
 												<!-- <i class="fas fa-home"></i> -->
-												<img src="admin/assets/images/bank.png" alt="">
+												<img src="{{ asset('/public') }}/admin/assets/images/bank.png" alt="">
 											</div>
 											<p>Total Job Seeker</p>
-											<span>(46 jobs)</span>
+											<span>({{ $count['seeker'] }})</span>
 										</div>
 										<div class="single_categories">
 											<div class="cat_icon icon_img">
 												<!-- <i class="fas fa-home"></i> -->
-												<img src="admin/assets/images/bank.png" alt="">
+												<img src="{{ asset('/public') }}/admin/assets/images/bank.png" alt="">
 											</div>
 											<p>Total Admin</p>
-											<span>(4286 jobs)</span>
+											<span>({{ $count['admin'] }})</span>
 										</div>
 									</div>
 								</div>

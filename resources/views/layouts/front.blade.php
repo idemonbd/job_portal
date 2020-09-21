@@ -22,8 +22,7 @@
 
 <body>
     @include('partials.header')
-    @yield('dashboard')
-    @yield('main-content')
+    @yield('content')
     @include('partials.footer')
 
     <!-- LinkUp Js -->

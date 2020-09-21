@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -35,7 +37,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:3|unique:categories',
+            'logo' => 'image'
+        ]);
+
+        $category = $request->all();
+
+        if ($request->has('logo')) {
+            $category['logo'] = $request->logo->store('category/logo');
+        }
+
+        Category::create($category);
+
+        return redirect()->back()->with('success', 'Category Added Successfully');
     }
 
     /**
@@ -69,7 +84,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:3|unique:categories',
+            'logo' => 'image'
+        ]);
+
+        $updatedata = $request->all();
+
+        if ($request->has('logo')) {
+            $updatedata['logo'] = $request->logo->store('category/logo');
+        }
+
+        $category->update($updatedata);
+
+        return redirect()->back()->with('success', 'Category Updated Successfully');
     }
 
     /**
@@ -80,6 +108,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->back()->with('success', 'Category Deleted Successfully');
     }
 }

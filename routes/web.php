@@ -13,53 +13,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/','SiteController@index');
 
 
-
-
-
-
-
-Route::get('/jobs', function () {
-    return view('jobs');
-});
-
-Route::get('/jobs/job-details', function () {
-    return view('job_details');
-});
-
-Route::group(['prefix' => '/admin'], function () {
-
+Route::group(['prefix' => '/admin','namespace' => 'admin'], function () {
     
-    Route::get('/', function () {
-        return view('users.admin.dashboard');
-    });
-    Route::get('/edit_profile', function () {
-        return view('users.admin.edit_profile');
-    });
-    Route::get('/add_categories', function () {
-        return view('users.admin.add_categories');
-    });
-    Route::get('/add_education', function () {
-        return view('users.admin.add_education');
-    });
-    Route::get('/post_job', function () {
-        return view('users.admin.post_job');
-    });
-    Route::get('/manage_jobSeeker', function () {
-        return view('users.admin.manage_jobSeeker');
-    });
-    Route::get('/manage_employer', function () {
-        return view('users.admin.manage_employer');
-    });
-    Route::get('/manage_admin', function () {
-        return view('users.admin.manage_admin');
-    });
+    Route::get('/','SiteController@admin');
+    Route::get('/profile','SiteController@admin_profile');
+    
+    Route::resource('category', 'CategoryController');
+    Route::resource('degree', 'DegreeController');
+    Route::resource('job', 'JobController');
+
+    Route::get('/manage_seeker','SiteController@manage_seeker');
+    Route::get('/manage_employer','SiteController@manage_employer');
+    Route::get('/manage_admin','SiteController@manage_admin');
+    // For update all users status
+    Route::put('/manage_user/{user}','UserController@update');
+    Route::delete('/manage_user/{user}','UserController@destroy');
+
 
 });
+
+
+
+
+
+
+
+
+
+
 
 Route::group(['prefix' => '/jobseeker'], function () {
     Route::get('/create-resume', function () {
@@ -83,7 +67,7 @@ Route::group(['prefix' => '/employer'], function () {
     Route::get('/create-company', function () {
         return view('users.employer.create_company');
     });
-    
+
     Route::get('/edit-company', function () {
         return view('users.employer.edit_company');
     });

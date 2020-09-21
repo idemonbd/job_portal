@@ -30,7 +30,8 @@
 <body id="page-top">
 
     @include('partials.header')
-    @yield('admin-dashboard')
+    @yield('content')
+
 
     <!--Dashboard Js Link-->
     <!-- Bootstrap core JavaScript-->
@@ -49,6 +50,8 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('public/dashboard/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('public/dashboard/js/demo/chart-pie-demo.js') }}"></script>
-
+    
+    @yield('scripts')
+    @include('partials.toastr')
 </body>
 </html>

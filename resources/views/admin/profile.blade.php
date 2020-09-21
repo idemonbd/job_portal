@@ -1,6 +1,5 @@
-@extends('layouts.dashboard')
-
-@section('admin-dashboard')
+@extends('layouts.admin')
+@section('content')
 <!-- Start Header Banner Area -->
 <div class="jobs_banner_area">
     <div class="container">
@@ -16,7 +15,7 @@
         <div class="row no-gutters">
             <div class="col-md-3">
                 <div class="view_left">
-                    @include('users.admin.partials.sidebar')
+                    @include('admin.partials.sidebar')
                 </div>
             </div>
             <div class="col-md-9">
