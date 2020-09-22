@@ -116,6 +116,8 @@
                     <div class="modal-body">
                         <label class="font-weight-bold">Name</label>
                         <input name="name" id="name_field" class="form-control  mb-3" type="text">
+                        <label for="logo">Logo</label>
+                        <input name="logo" class="form-control  mb-3" type="file">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

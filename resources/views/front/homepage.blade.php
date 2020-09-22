@@ -15,8 +15,9 @@
                         </div>
                         <div class="form-group">
                             <select>
-                                <option selected>Choose a category</option>
-                                <option>development</option>
+                                @foreach ($categories as $category)
+                                    <option value="">{{ $category->name }}</option>                                    
+                                @endforeach
                             </select>
                         </div>
                         <div class="button_search">
@@ -38,54 +39,17 @@
             </p>
         </div>
         <div class="all_categories">
+            
+            @foreach ($categories as $category)
             <div class="single_categories">
                 <div class="cat_icon icon_img">
                     <!-- <i class="fas fa-home"></i> -->
-                    <img src="admin/assets/images/bank.png" alt="">
+                    <img src="{{ asset('public/storage'.'/'.$category->logo) }}" alt="">
                 </div>
-                <p>Finance</p>
-                <span>(4286 jobs)</span>
-            </div>
-            <div class="single_categories">
-                <div class="cat_icon icon_img">
-                    <!-- <i class="fas fa-home"></i> -->
-                    <img src="admin/assets/images/bank.png" alt="">
-                </div>
-                <p>Finance</p>
-                <span>(4286 jobs)</span>
-            </div>
-            <div class="single_categories">
-                <div class="cat_icon icon_img">
-                    <!-- <i class="fas fa-home"></i> -->
-                    <a href=""><img src="admin/assets/images/bank.png" alt=""></a>
-                </div>
-                <p>Finance</p>
-                <span>(46 jobs)</span>
-            </div>
-            <div class="single_categories">
-                <div class="cat_icon icon_img">
-                    <!-- <i class="fas fa-home"></i> -->
-                    <img src="admin/assets/images/bank.png" alt="">
-                </div>
-                <p>Finance</p>
-                <span>(4286 jobs)</span>
-            </div>
-            <div class="single_categories">
-                <div class="cat_icon icon_img">
-                    <!-- <i class="fas fa-home"></i> -->
-                    <img src="admin/assets/images/bank.png" alt="">
-                </div>
-                <p>Finance</p>
-                <span>(4286 jobs)</span>
-            </div>
-            <div class="single_categories">
-                <div class="cat_icon icon_img">
-                    <!-- <i class="fas fa-home"></i> -->
-                    <img src="admin/assets/images/bank.png" alt="">
-                </div>
-                <p>Finance</p>
-                <span>(4286 jobs)</span>
-            </div>
+                <p>{{ $category->name }}</p>
+                <span>({{ $category->jobs->count() }} jobs)</span>
+            </div>                
+            @endforeach
         </div>
     </div>
 </div>
@@ -129,78 +93,26 @@
             <h4>Hundreds of Jobs From All Over the Globe</h4>
         </div>
         <div class="joblist">
-            <a href="job_details.html">
-                <div class="single_job">
-                    <div class="job_company_logo">
-                        <img src="{{ asset('/') }}/admin/assets/images/company.jpg" alt="">
-                        <div class="job_title">
-                            <h5>web designer</h5>
-                            <p>shopify</p>
+            @foreach ($jobs as $job)
+                <a href="job_details.html">
+                    <div class="single_job">
+                        <div class="job_company_logo">
+                            <img src="{{ asset('storage/'.$job->logo) }}" alt="">
+                            <div class="job_title">
+                                <h5>{{ $job->title }}</h5>
+                                <p>{{$job->category->name}}</p>
+                            </div>
+                        </div>
+                        <div class="job_location">
+                            <i class="fas fa-map-marker"></i>
+                            <p>{{$job->location}}</p>
+                        </div>
+                        <div class="job_type">
+                            <p class="part_time">part time</p>
                         </div>
                     </div>
-                    <div class="job_location">
-                        <i class="fas fa-map-marker"></i>
-                        <p>New York, New York</p>
-                    </div>
-                    <div class="job_type">
-                        <p class="part_time">part time</p>
-                    </div>
-                </div>
-            </a>
-            <a href="job_details.html">
-                <div class="single_job">
-                    <div class="job_company_logo">
-                        <img src="{{ asset('/') }}/admin/assets/images/company.jpg" alt="">
-                        <div class="job_title">
-                            <h5>web designer</h5>
-                            <p>shopify</p>
-                        </div>
-                    </div>
-                    <div class="job_location">
-                        <i class="fas fa-map-marker"></i>
-                        <p>New York, New York</p>
-                    </div>
-                    <div class="job_type">
-                        <p class="full_time">full time</p>
-                    </div>
-                </div>
-            </a>
-            <a href="job_details.html">
-                <div class="single_job">
-                    <div class="job_company_logo">
-                        <img src="{{ asset('/') }}/admin/assets/images/company.jpg" alt="">
-                        <div class="job_title">
-                            <h5>web designer</h5>
-                            <p>shopify</p>
-                        </div>
-                    </div>
-                    <div class="job_location">
-                        <i class="fas fa-map-marker"></i>
-                        <p>New York, New York</p>
-                    </div>
-                    <div class="job_type">
-                        <p class="full_time">full time</p>
-                    </div>
-                </div>
-            </a>
-            <a href="job_details.html">
-                <div class="single_job">
-                    <div class="job_company_logo">
-                        <img src="{{ asset('/') }}/admin/assets/images/company.jpg" alt="">
-                        <div class="job_title">
-                            <h5>web designer</h5>
-                            <p>shopify</p>
-                        </div>
-                    </div>
-                    <div class="job_location">
-                        <i class="fas fa-map-marker"></i>
-                        <p>New York, New York</p>
-                    </div>
-                    <div class="job_type">
-                        <p class="part_time">part time</p>
-                    </div>
-                </div>
-            </a>
+                </a>
+            @endforeach
             <div class="joblist_btn">
                 <a href="">Browse all jobs</a>
             </div>

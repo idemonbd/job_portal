@@ -4,7 +4,7 @@
         <div class="header_menu">
             <div class="menu_logo">
                 <h2>
-                    <a href="/home">Job<span>Panel</span></a>
+                    <a href="{{ url('/') }}">Job<span>Panel</span></a>
                 </h2>
             </div>
             <div class="menues">

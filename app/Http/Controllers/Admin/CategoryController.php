@@ -85,7 +85,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            'name' => 'required|min:3|unique:categories',
+            'name' => 'required|min:3',
             'logo' => 'image'
         ]);
 
