@@ -8,6 +8,26 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+
+    public function manage_seeker()
+    {
+        $users = User::where('role', 'seeker')->paginate(10);
+        return view('admin.manage.seeker', compact('users'));
+    }
+
+    public function manage_employer()
+    {
+        $users = User::where('role', 'employer')->paginate(10);
+        return view('admin.manage.employer', compact('users'));
+    }
+
+    public function manage_admin()
+    {
+        $users = User::where('role', 'admin')->paginate(10);
+        return view('admin.manage.admin', compact('users'));
+    }
+
+
     public function update(Request $request, User $user)
     {
         if ($request->has('status')) {
