@@ -94,7 +94,7 @@
         </div>
         <div class="joblist">
             @foreach ($jobs as $job)
-                <a href="job_details.html">
+                <a href="{{ url('job/'.$job->id) }}">
                     <div class="single_job">
                         <div class="job_company_logo">
                             <img src="{{ asset('storage/'.$job->logo) }}" alt="">
@@ -114,7 +114,7 @@
                 </a>
             @endforeach
             <div class="joblist_btn">
-                <a href="">Browse all jobs</a>
+                <a href="{{ url('job') }}">Browse all jobs</a>
             </div>
         </div>
     </div>

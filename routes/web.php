@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
     // navigation
     Route::get('/','SiteController@index');
-    Route::resource('job', 'JobController@index');
+    Route::resource('job', 'JobController');
 //
 
 ///////////// Admin Backend Routes//////////////////

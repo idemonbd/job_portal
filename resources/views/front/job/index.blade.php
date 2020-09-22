@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.front')
 
-@section('main-content')
+@section('content')
 <!-- Start Header Banner Area -->
 <div class="jobs_banner_area">
     <div class="container">
@@ -13,8 +13,9 @@
                         </div>
                         <div class="form-group">
                             <select>
-                                <option selected>Choose a category</option>
-                                <option>development</option>
+                                @foreach ($categories as $category)
+                                <option value="">{{ $category->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="button_search">
@@ -31,82 +32,26 @@
 <div class="joblist_area">
     <div class="container">
         <div class="joblist">
-            <div class="single_job">
-                <div class="job_company_logo">
-                    <img src="{{asset('/admin/assets/images/company.jpg')}}" alt="">
-                    <div class="job_title">
-                        <h5>web designer</h5>
-                        <p>shopify</p>
+            @foreach ($jobs as $job)
+            <a href="{{ url('job/'.$job->id) }}">
+                <div class="single_job">
+                    <div class="job_company_logo">
+                        <img src="{{ asset('storage/'.$job->logo) }}" alt="">
+                        <div class="job_title">
+                            <h5>{{ $job->title }}</h5>
+                            <p>{{$job->category->name}}</p>
+                        </div>
+                    </div>
+                    <div class="job_location">
+                        <i class="fas fa-map-marker"></i>
+                        <p>{{$job->location}}</p>
+                    </div>
+                    <div class="job_type">
+                        <p class="part_time">part time</p>
                     </div>
                 </div>
-                <div class="job_location">
-                    <i class="fas fa-map-marker"></i>
-                    <p>New York, New York</p>
-                </div>
-                <div class="job_type">
-                    <p class="part_time">part time</p>
-                </div>
-                <div class="job_apply">
-                    <p><a href="/jobs/job-details">apply</a></p>
-                </div>
-            </div>
-            <div class="single_job">
-                <div class="job_company_logo">
-                    <img src="{{asset('/admin/assets/images/company.jpg')}}" alt="">
-                    <div class="job_title">
-                        <h5>web designer</h5>
-                        <p>shopify</p>
-                    </div>
-                </div>
-                <div class="job_location">
-                    <i class="fas fa-map-marker"></i>
-                    <p>New York, New York</p>
-                </div>
-                <div class="job_type">
-                    <p class="full_time">full time</p>
-                </div>
-                <div class="job_apply">
-                    <p><a href="/jobs/job-details">apply</a></p>
-                </div>
-            </div>
-            <div class="single_job">
-                <div class="job_company_logo">
-                    <img src="{{asset('/admin/assets/images/company.jpg')}}" alt="">
-                    <div class="job_title">
-                        <h5>web designer</h5>
-                        <p>shopify</p>
-                    </div>
-                </div>
-                <div class="job_location">
-                    <i class="fas fa-map-marker"></i>
-                    <p>New York, New York</p>
-                </div>
-                <div class="job_type">
-                    <p class="full_time">full time</p>
-                </div>
-                <div class="job_apply">
-                    <p><a href="/jobs/job-details">apply</a></p>
-                </div>
-            </div>
-            <div class="single_job">
-                <div class="job_company_logo">
-                    <img src="{{asset('/admin/assets/images/company.jpg')}}" alt="">
-                    <div class="job_title">
-                        <h5>web designer</h5>
-                        <p>shopify</p>
-                    </div>
-                </div>
-                <div class="job_location">
-                    <i class="fas fa-map-marker"></i>
-                    <p>New York, New York</p>
-                </div>
-                <div class="job_type">
-                    <p class="part_time">part time</p>
-                </div>
-                <div class="job_apply">
-                    <p><a href="/jobs/job-details">apply</a></p>
-                </div>
-            </div>
+            </a>
+            @endforeach
         </div>
     </div>
 </div>

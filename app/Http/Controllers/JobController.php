@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Job;
+use App\Category;
 use Illuminate\Http\Request;
 
 
@@ -15,8 +16,9 @@ class JobController extends Controller
      */
     public function index()
     {
+        $categories = Category::all();
         $jobs = Job::all();
-        return view('front.job.index', compact('jobs'));
+        return view('front.job.index', compact('categories','jobs'));
     }
 
     /**
@@ -48,7 +50,8 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        //
+        $jobs = Category::find($job->category->id)->jobs->skip($job->id);
+        return view('front.job.show', compact('job', 'jobs'));
     }
 
     /**
