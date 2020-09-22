@@ -41,14 +41,16 @@
         <div class="all_categories">
             
             @foreach ($categories as $category)
-            <div class="single_categories">
-                <div class="cat_icon icon_img">
-                    <!-- <i class="fas fa-home"></i> -->
-                    <img src="{{ asset('public/storage'.'/'.$category->logo) }}" alt="">
-                </div>
-                <p>{{ $category->name }}</p>
-                <span>({{ $category->jobs->count() }} jobs)</span>
-            </div>                
+            <a href="{{ url('category/'.$categroy->id) }}">
+                <div class="single_categories">
+                    <div class="cat_icon icon_img">
+                        <!-- <i class="fas fa-home"></i> -->
+                        <img src="{{ asset('public/storage'.'/'.$category->logo) }}" alt="">
+                    </div>
+                    <p>{{ $category->name }}</p>
+                    <span>({{ $category->jobs->count() }} jobs)</span>
+                </div> 
+            </a>               
             @endforeach
         </div>
     </div>

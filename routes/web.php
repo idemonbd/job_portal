@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 
     // navigation
     Route::get('/','SiteController@index');
+    Route::resource('category', 'CategoryController');
     Route::resource('job', 'JobController');
 //
 
