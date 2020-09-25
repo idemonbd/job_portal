@@ -6,10 +6,14 @@ use Illuminate\Support\Facades\Route;
 ///////////// Frontend Routes//////////////////
 
     // Auth
-    Auth::routes();
+    Auth::routes(['verify' => true]);
 
     // navigation
     Route::get('/','SiteController@index');
+
+    Route::get('/home', 'HomeController@index');
+
+
     Route::resource('category', 'CategoryController');
     Route::resource('job', 'JobController');
 //

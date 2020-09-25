@@ -41,7 +41,7 @@
         <div class="all_categories">
             
             @foreach ($categories as $category)
-            <a href="{{ url('category/'.$categroy->id) }}">
+            <a href="{{ url('category/'.$category->id) }}">
                 <div class="single_categories">
                     <div class="cat_icon icon_img">
                         <!-- <i class="fas fa-home"></i> -->

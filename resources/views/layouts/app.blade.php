@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+        <!-- Bootstrap Css -->
+        <link rel="stylesheet" href="{{ asset('public/admin/assets/css/bootstrap.min.css') }}" />
+
 </head>
 <body>
     <div id="app">
@@ -76,5 +79,9 @@
             @yield('content')
         </main>
     </div>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="{{ asset('public/dashboard/vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('public/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>
