@@ -7,12 +7,16 @@ use Illuminate\Support\Facades\Route;
 
     // Auth
     Auth::routes(['verify' => true]);
+    // Custom register
+    Route::get('employer/company/create','SiteController@employer');
+    Route::post('employer/company/create','SiteController@emReg');
+
+    Route::get('seeker/resume/create','SiteController@seeker');
+    Route::post('seeker/company/create','SiteController@seekReg');
+
 
     // navigation
     Route::get('/','SiteController@index');
-    Route::get('employer/company/create','SiteController@employer');
-    Route::get('seeker/resume/create','SiteController@seeker');
-
 
     Route::resource('category', 'Admin\CategoryController');
     Route::resource('job', 'JobController');

@@ -8,6 +8,6 @@ class SiteController extends Controller
 {
     public function index()
     {
-        return view('employer.job.post');
+        return view('employer.job.create');
     }
 }

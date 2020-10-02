@@ -10,8 +10,8 @@
             <div class="menues">
                 <ul>
                     <li><a href="{{ url('/') }}">Home</a></li>
-                    <li><a href="{{ url('employer/company/create') }}">Jobseeker</a></li>
-                    <li><a href="{{ url('seeker/resume/create') }}">Employeer</a></li>
+                    <li><a href="{{ url('seeker/resume/create') }}">Jobseeker</a></li>
+                    <li><a href="{{ url('employer/company/create') }}">Employer</a></li>
                 </ul>
             </div>
             {{-- <div class="menu_login_area">
