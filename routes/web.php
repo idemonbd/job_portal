@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Route;
 
     // navigation
     Route::get('/','SiteController@index');
-
-    Route::get('/home', 'HomeController@index');
+    Route::get('employer/company/create','SiteController@employer');
+    Route::get('seeker/resume/create','SiteController@seeker');
 
 
     Route::resource('category', 'Admin\CategoryController');
@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 //
 
 ///////////// Admin Backend Routes//////////////////
-    Route::group(['prefix' => '/admin','namespace' => 'admin','middleware' => ['auth','admin']], function () {
+    Route::group(['prefix' => '/admin','namespace' => 'Admin','middleware' => ['auth','admin']], function () {
 
         // navigation
         Route::middleware(['verified'])->get('/','AdminController@dashboard');
@@ -42,12 +42,31 @@ use Illuminate\Support\Facades\Route;
     });
 //
 
+
 ///////////// Employer Routes//////////////////
-    Route::group(['prefix' => '/employer','namespace' => 'employer'], function () {
+Route::group(['prefix' => '/employer','namespace' => 'employer'], function () {
+        
+    Route::get('/','SiteController@index');
+    Route::resource('job', 'JobController');
+    Route::get('job/applied', 'JobController@applied');
+    Route::get('company', 'CompanyController@index');
+    Route::get('company/create', 'CompanyController@create');
+    Route::get('company/edit', 'CompanyController@edit');
+
+});
+//
+
+
+///////////// Seeker Routes //////////////////
+    Route::group(['prefix' => '/seeker','namespace' => 'Seeker'], function () {
         
         Route::get('/','SiteController@index');
-        Route::resource('job', 'JobController');
-        Route::resource('company', 'CompayController');
+        // Route::resource('job', 'JobController');
+        // Route::get('job/applied', 'JobController@applied');
+        // Route::get('company', 'CompanyController@index');
+        // Route::get('company/create', 'CompanyController@create');
+        // Route::get('company/edit', 'CompanyController@edit');
 
     });
 //
+

@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 
-@section('main-content')
+@section('content')
 <!-- Start Header Banner Area -->
 <div class="jobs_banner_area">
     <div class="container">
