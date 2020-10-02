@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateJobsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('jobs', function (Blueprint $table) {
@@ -28,6 +23,7 @@ class CreateJobsTable extends Migration
             $table->date('deadline')->nullable();
             $table->string('company')->nullable();
             $table->string('website')->nullable();
+            $table->integer('salary')->nullable();
             $table->string('logo')->nullable();    
             $table->timestamps();
             

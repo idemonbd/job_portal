@@ -63,6 +63,10 @@
                                     <input type="text" name="website">
                                 </div>
                                 <div class="form-group">
+                                    <label>Salery</label>
+                                    <input type="text" name="salary">
+                                </div>
+                                <div class="form-group">
                                     <label>Company Logo</label>
                                     <input type="file" name="logo">
                                 </div>

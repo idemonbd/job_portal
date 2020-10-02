@@ -14,15 +14,15 @@ use Illuminate\Support\Facades\Route;
     Route::get('/home', 'HomeController@index');
 
 
-    Route::resource('category', 'CategoryController');
+    Route::resource('category', 'Admin\CategoryController');
     Route::resource('job', 'JobController');
 //
 
 ///////////// Admin Backend Routes//////////////////
-    Route::group(['prefix' => '/admin','namespace' => 'admin'], function () {
+    Route::group(['prefix' => '/admin','namespace' => 'admin','middleware' => ['auth','admin']], function () {
 
         // navigation
-        Route::get('/','AdminController@dashboard');
+        Route::middleware(['verified'])->get('/','AdminController@dashboard');
         Route::get('profile','AdminController@profile');
         
         // Restfull Controller| Category | degere | job
@@ -39,14 +39,15 @@ use Illuminate\Support\Facades\Route;
         Route::put('manage_user/{user}','UserController@update');
         Route::delete('manage_user/{user}','UserController@destroy');
 
-
     });
 //
 
 ///////////// Employer Routes//////////////////
     Route::group(['prefix' => '/employer','namespace' => 'employer'], function () {
         
-        Route::get('/','SiteController@employer');
+        Route::get('/','SiteController@index');
+        Route::resource('job', 'JobController');
+        Route::resource('company', 'CompayController');
 
     });
 //

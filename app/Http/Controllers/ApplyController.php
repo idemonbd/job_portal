@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Job;
-use App\Category;
+use App\Apply;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
-class JobController extends Controller
+class ApplyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,8 +24,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('admin.job.create', compact('categories'));
+        //
     }
 
     /**
@@ -39,33 +35,16 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'logo' => 'image'
-        ]);
-
-        $job = $request->all();
-        $job['user_id'] = Auth::id();
-        $job['status'] = 1;
-
-        if ($request->has('logo')) {
-            $job['logo'] = $request->logo->store('/job/logo');
-        }
-
-        Job::create($job);
-
-        return redirect()->back()->with('success', 'Job Added Successfully');
-
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Job  $job
+     * @param  \App\Apply  $apply
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $job)
+    public function show(Apply $apply)
     {
         //
     }
@@ -73,10 +52,10 @@ class JobController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Job  $job
+     * @param  \App\Apply  $apply
      * @return \Illuminate\Http\Response
      */
-    public function edit(Job $job)
+    public function edit(Apply $apply)
     {
         //
     }
@@ -85,10 +64,10 @@ class JobController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Job  $job
+     * @param  \App\Apply  $apply
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Job $job)
+    public function update(Request $request, Apply $apply)
     {
         //
     }
@@ -96,10 +75,10 @@ class JobController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Job  $job
+     * @param  \App\Apply  $apply
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Job $job)
+    public function destroy(Apply $apply)
     {
         //
     }

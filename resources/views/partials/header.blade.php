@@ -9,15 +9,15 @@
             </div>
             <div class="menues">
                 <ul>
-                    <li><a href="{{ url('/') }}">home</a></li>
-                    <li><a href="{{ url('/') }}/jobseeker/create-resume">jobseeker</a></li>
-                    <li><a href="{{ url('/') }}/employer/create-company">employeer</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ url('/jobseeker/register') }}">jobseeker</a></li>
+                    <li><a href="{{ url('/employer/register') }}">employeer</a></li>
                 </ul>
             </div>
-            <div class="menu_login_area">
+            {{-- <div class="menu_login_area">
                 <a href="{{ url('login') }}" class="btn btn-primary">Login</a>
                 <a href="{{ url('register') }}" class="btn btn-primary">Register</a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

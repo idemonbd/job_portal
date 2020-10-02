@@ -7,7 +7,7 @@
         <div class="jobs_banner_content width flex">
             <div class="jobs_banner_left flex">
                 <div class="jobs_logo">
-                    <img src="{{asset('/admin/assets/images/company-logo.png')}}" alt="">
+                    <img src="{{ asset('public/storage/'.$job->logo) }}" style="width: 100px; background:#fff" alt="">
                 </div>
                 <div class="jobs_logo_content">
                     <h2>{{ $job->title }}</h2>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="jobs_banner_right">
-                <p>100Tk</p>
+                <p>{{ $job->salary }}</p>
             </div>
         </div>
     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Job;
 
 class CategoryController extends Controller
 {
@@ -61,7 +62,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $categories = Category::all();
+        $jobs = Job::where('category_id', $category->id)->get();
+        return view('front.job.index', compact('jobs','categories'));
     }
 
     /**

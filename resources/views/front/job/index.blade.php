@@ -36,7 +36,7 @@
             <a href="{{ url('job/'.$job->id) }}">
                 <div class="single_job">
                     <div class="job_company_logo">
-                        <img src="{{ asset('storage/'.$job->logo) }}" alt="">
+                        <img src="{{ asset('public/storage/'.$job->logo) }}" alt="">
                         <div class="job_title">
                             <h5>{{ $job->title }}</h5>
                             <p>{{$job->category->name}}</p>
