@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('role')->default('seeker');
 
             // Personal Information
+            $table->string('picture')->nullable();
             $table->string('father')->nullable();
             $table->string('mother')->nullable();
             $table->string('date_of_birth')->nullable();

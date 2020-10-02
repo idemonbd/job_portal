@@ -62,28 +62,22 @@ class SiteController extends Controller
 
     public function seekReg(Request $request)
     {
-       // return $request;
+       return $request;
        $request->validate([
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
     ]);
+
+    $data = $request->all();
+    if ($request->has('picture')) {
+        $data['picture'] = $request->picture->store('/avater');
+    }
+    $data['password'] = Hash::make($request->password);
+    $data['role'] = 'seeker';
+
+
     event(new Registered(
-        $user = User::create([
-            // required
-            'name' => $request->company_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-
-            'role' => 'seeker',
-
-            'company_name' => $request->company_name,
-            'company_email' => $request->company_email,
-            'company_mobile' => $request->company_mobile,
-            'company_address' => $request->company_address,
-            'company_twitter' => $request->company_twitter,
-            'company_facebook' => $request->company_facebook,
-
-        ])
+        $user = User::create($data)
     ));
 
         Auth::login($user);

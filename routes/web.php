@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
     Route::post('employer/company/create','SiteController@emReg');
 
     Route::get('seeker/resume/create','SiteController@seeker');
-    Route::post('seeker/company/create','SiteController@seekReg');
+    Route::post('seeker/resume/create','SiteController@seekReg');
 
 
     // navigation
