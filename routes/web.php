@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 
     // navigation
     Route::get('/','SiteController@index');
+    Route::get('/home', function(){
+        return view('jome');
+    });
 
     Route::resource('category', 'Admin\CategoryController');
     Route::resource('job', 'JobController');
@@ -49,7 +52,7 @@ use Illuminate\Support\Facades\Route;
 
 
 ///////////// Employer Routes//////////////////
-Route::group(['prefix' => '/employer','namespace' => 'employer', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => '/employer','namespace' => 'employer', 'middleware' => ['auth','verified']], function () {
         
     Route::get('/','SiteController@index');
     Route::resource('job', 'JobController');
@@ -63,7 +66,7 @@ Route::group(['prefix' => '/employer','namespace' => 'employer', 'middleware' =>
 
 
 ///////////// Seeker Routes //////////////////
-    Route::group(['prefix' => '/seeker','namespace' => 'Seeker','middleware' => ['auth']], function () {
+    Route::group(['prefix' => '/seeker','namespace' => 'Seeker','middleware' => ['auth','verified']], function () {
         
         Route::get('/','SeekerController@index');
         Route::get('/profile/edit','SeekerController@edit');
