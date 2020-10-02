@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::resource('category', 'Admin\CategoryController');
     Route::resource('job', 'JobController');
+
 //
 
 ///////////// Admin Backend Routes//////////////////
@@ -48,7 +49,7 @@ use Illuminate\Support\Facades\Route;
 
 
 ///////////// Employer Routes//////////////////
-Route::group(['prefix' => '/employer','namespace' => 'employer'], function () {
+Route::group(['prefix' => '/employer','namespace' => 'employer', 'middleware' => ['auth']], function () {
         
     Route::get('/','SiteController@index');
     Route::resource('job', 'JobController');
@@ -62,15 +63,13 @@ Route::group(['prefix' => '/employer','namespace' => 'employer'], function () {
 
 
 ///////////// Seeker Routes //////////////////
-    Route::group(['prefix' => '/seeker','namespace' => 'Seeker'], function () {
+    Route::group(['prefix' => '/seeker','namespace' => 'Seeker','middleware' => ['auth']], function () {
         
-        Route::get('/','SiteController@index');
-        // Route::resource('job', 'JobController');
-        // Route::get('job/applied', 'JobController@applied');
-        // Route::get('company', 'CompanyController@index');
-        // Route::get('company/create', 'CompanyController@create');
-        // Route::get('company/edit', 'CompanyController@edit');
-
+        Route::get('/','SeekerController@index');
+        Route::get('/profile/edit','SeekerController@edit');
+        Route::get('/applied','SeekerController@applied');
+        Route::resource('job', 'JobController');
+        Route::post('job/{job}/apply', 'ApplyController@store');
     });
 //
 

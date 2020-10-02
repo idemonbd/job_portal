@@ -35,9 +35,26 @@
             <div class="single_job_del">
                 {{ $job->description }}
             </div>
-            <div class="job_apply">
-                <p><a href="applied_jobs">apply</a></p>
-            </div>
+            @auth
+
+            @if ($applied)
+            <div class="alert alert-info">Already Applied</div>
+            @else
+            <form action="{{ url('seeker/job/'.$job->id.'/apply') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="exp_salery">Expected Salery</label>
+                    <input type="text" name="exp_salery" class="form-control">
+                </div>
+                <div class="job_apply">
+                    <button class="btn btn-dark">Apply</button>
+                </div>
+            </form>
+            @endif
+
+            @else
+            <div class="alert alert-info">Login to apply</div>
+            @endauth
         </div>
         <div class="job_details_right">
             <h5>Company Social</h5>

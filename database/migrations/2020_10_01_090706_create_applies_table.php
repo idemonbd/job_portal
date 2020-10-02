@@ -17,6 +17,7 @@ class CreateAppliesTable extends Migration
             $table->id();
             $table->integer('job_id');
             $table->integer('user_id');
+            $table->integer('exp_salery');
             $table->timestamps();
         });
     }

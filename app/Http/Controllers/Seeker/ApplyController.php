@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Seeker;
 
 use App\Apply;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ApplyController extends Controller
 {
@@ -24,7 +26,7 @@ class ApplyController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -33,9 +35,14 @@ class ApplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        Apply::create([
+            'job_id' => $id,
+            'user_id' => Auth::id(),
+            'exp_salery' => $request->exp_salery,
+        ]);
+        return redirect()->back()->with('success','Successfully Applied');
     }
 
     /**
