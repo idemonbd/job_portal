@@ -10,23 +10,36 @@
             <div class="menues">
                 <ul>
                     <li><a href="{{ url('/') }}">Home</a></li>
-                    <li><a href="{{ url('seeker/resume/create') }}">Jobseeker</a></li>
-                    <li><a href="{{ url('employer/company/create') }}">Employer</a></li>
+                   @guest
+                   <li><a href="{{ url('seeker/resume/create') }}">Jobseeker</a></li>
+                   <li><a href="{{ url('employer/company/create') }}">Employer</a></li>
+
+                   @endguest
                 </ul>
             </div>
             <div class="menu_login_area">
                 <div class="dropdown bg-transparent">
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ asset('admin/assets/images/download (1).jpg') }}" alt="..." class="rounded-circle"
-                            style="width: 32px">
+                       @auth
+                       <img src="{{ asset('public/storage'.Auth::user()->avater) }}" alt="..." class="rounded-circle"
+                       style="width: 32px">
+                       @endauth
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         @guest
                         <a class="dropdown-item" href="{{ route('login') }}">Login</a>
                         @else
 
+                        @if (Auth::user()->role == 'seeker')
                         <a class="dropdown-item" href="{{ url('seeker') }}">Dashboard</a>
+                        @endif
+                        @if (Auth::user()->role == 'admin')
+                        <a class="dropdown-item" href="{{ url('admin') }}">Dashboard</a>
+                        @endif
+                        @if (Auth::user()->role == 'employer')
+                        <a class="dropdown-item" href="{{ url('employer') }}">Dashboard</a>
+                        @endif
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
