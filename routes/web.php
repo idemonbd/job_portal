@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::resource('category', 'Admin\CategoryController');
     Route::resource('job', 'JobController');
+    Route::get('search', 'JobController@search');
 
 //
 
@@ -55,11 +56,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => '/employer','namespace' => 'employer', 'middleware' => ['auth','verified']], function () {
         
     Route::get('/','SiteController@index');
-    Route::resource('job', 'JobController');
     Route::get('job/applied', 'JobController@applied');
+    Route::resource('job', 'JobController');
     Route::get('company', 'CompanyController@index');
-    Route::get('company/create', 'CompanyController@create');
     Route::get('company/edit', 'CompanyController@edit');
+    Route::put('company/update', 'CompanyController@update');
 
 });
 //

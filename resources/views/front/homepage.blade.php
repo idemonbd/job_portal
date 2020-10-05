@@ -8,21 +8,21 @@
             <h2>The Easiest Way to Get Your New Job</h2>
             <p>Find jobs, create trackable resumes and enrich your applications.</p>
             <div class="banner_search">
-                <form>
+                <form action="{{ url('search') }}" method="GET">
                     <div class="form-row">
                         <div class="form-group">
-                            <input type="email" placeholder="location">
+                            <input name="q" type="text" placeholder="location" required>
                         </div>
                         <div class="form-group">
-                            <select>
+                            <select name="cat">
                                 @foreach ($categories as $category)
-                                    <option value="">{{ $category->name }}</option>                                    
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="button_search">
+                        <button type="submit" class="button_search">
                             <i class="fas fa-search"></i>
-                        </div>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -39,7 +39,7 @@
             </p>
         </div>
         <div class="all_categories">
-            
+
             @foreach ($categories as $category)
             <a href="{{ url('category/'.$category->id) }}">
                 <div class="single_categories">
@@ -49,8 +49,8 @@
                     </div>
                     <p>{{ $category->name }}</p>
                     <span>({{ $category->jobs->count() }} jobs)</span>
-                </div> 
-            </a>               
+                </div>
+            </a>
             @endforeach
         </div>
     </div>
@@ -96,24 +96,24 @@
         </div>
         <div class="joblist">
             @foreach ($jobs as $job)
-                <a href="{{ url('job/'.$job->id) }}">
-                    <div class="single_job">
-                        <div class="job_company_logo">
-                            <img src="{{ asset('storage/'.$job->logo) }}" alt="">
-                            <div class="job_title">
-                                <h5>{{ $job->title }}</h5>
-                                <p>{{$job->category->name}}</p>
-                            </div>
-                        </div>
-                        <div class="job_location">
-                            <i class="fas fa-map-marker"></i>
-                            <p>{{$job->location}}</p>
-                        </div>
-                        <div class="job_type">
-                            <p class="part_time">part time</p>
+            <a href="{{ url('job/'.$job->id) }}">
+                <div class="single_job">
+                    <div class="job_company_logo">
+                        <img src="{{ asset('storage/'.$job->logo) }}" alt="">
+                        <div class="job_title">
+                            <h5>{{ $job->title }}</h5>
+                            <p>{{$job->category->name}}</p>
                         </div>
                     </div>
-                </a>
+                    <div class="job_location">
+                        <i class="fas fa-map-marker"></i>
+                        <p>{{$job->location}}</p>
+                    </div>
+                    <div class="job_type">
+                        <p class="part_time">part time</p>
+                    </div>
+                </div>
+            </a>
             @endforeach
             <div class="joblist_btn">
                 <a href="{{ url('job') }}">Browse all jobs</a>

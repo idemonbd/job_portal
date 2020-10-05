@@ -23,55 +23,59 @@
                 <div class="edit_resume_area">
                     <div class="container">
                         <div class="form">
-                            <div class="form-group">
-                                <label>Job Title</label>
-                                <input type="text" placeholder="write job title">
-                            </div>
-                            <div class="form-group">
-                                <label>Company</label>
-                                <input type="text" placeholder="write company name">
-                            </div>
-                            <div class="form-group">
-                                <label>Location</label>
-                                <input type="text" placeholder="write Location ">
-                            </div>
-                            <div class="form-group">
-                                <label>Category</label>
-                                <select>
-                                    <option>all category</option>
-                                    <option>food</option>
-                                    <option>science</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Job Tags (optional)</label>
-                                <input type="text" placeholder="write Job tags">
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Closing Date (optional)</label>
-                                <input type="text" placeholder="yyyy-mm-dd">
-                            </div>
-                            <h5>Company Details
-                            </h5>
-                            <div class="form-group">
-                                <label>Company Name</label>
-                                <input type="text" placeholder="company Name">
-                            </div>
-                            <div class="form-group">
-                                <label>Website (optional)</label>
-                                <input type="text" placeholder="Website (optional)">
-                            </div>
-                            <div class="form-group">
-                                <label>Company Logo</label>
-                                <input type="file" placeholder="choose image">
-                            </div>
-                            <div class="job_apply">
-                                <p><a href="">apply</a></p>
-                            </div>
+                            <form action="{{ url('employer/job') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <label>Job Title *</label>
+                                    <input type="text" name="title" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Location</label>
+                                    <input type="text" name="location">
+                                </div>
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <select name="category_id" required>
+                                        @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Job Tags (optional)</label>
+                                    <input type="text" name="tags">
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea name="description" class="form-control" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Closing Date (optional)</label>
+                                    <input type="date" name="deadline">
+                                </div>
+                                <h5>Company Details
+                                </h5>
+                                <div class="form-group">
+                                    <label>Company Name</label>
+                                    <input type="text" name="company">
+                                </div>
+                                <div class="form-group">
+                                    <label>Website (optional)</label>
+                                    <input type="text" name="website">
+                                </div>
+                                <div class="form-group">
+                                    <label>Salery</label>
+                                    <input type="text" name="salary">
+                                </div>
+                                <div class="form-group">
+                                    <label>Company Logo</label>
+                                    <input type="file" name="logo">
+                                </div>
+                                <div class="job_apply">
+                                    <input type="submit" class="btn btn-primary" value="Post Job">
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                     <!-- End Edit Resume -->

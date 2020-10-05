@@ -93,4 +93,12 @@ class JobController extends Controller
     {
         //
     }
+
+
+    public function search(Request $request)
+    {
+        $jobs = Job::where('category_id', $request->cat)->where('title','LIKE',"%{$request->q}%")->orWhere('description','LIKE',"%{$request->q}%")->get();
+        $categories = Category::all();
+        return view('front.job.index', compact('categories','jobs'));
+    }
 }

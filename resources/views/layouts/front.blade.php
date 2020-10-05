@@ -24,7 +24,7 @@
     @include('partials.header')
     @yield('content')
     @include('partials.footer')
-
+    
     <!-- LinkUp Js -->
     <script type="text/javascript" src="{{ asset('public/admin/assets/js/jquery-1.12.4.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('public/admin/assets/js/popper.min.js') }}"></script>
@@ -32,6 +32,8 @@
     <script type="text/javascript" src="{{ asset('public/admin/assets/js/owl.carousel.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('public/admin/assets/js/owl.carousel2.thumbs.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('public/admin/assets/js/active.js') }}"></script>
+    @yield('scripts')
+    @include('partials.toastr')
 
 </body>
 
