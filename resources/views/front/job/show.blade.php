@@ -36,7 +36,8 @@
                 {{ $job->description }}
             </div>
             @auth
-
+            @if (Auth::user()->role == 'seeker')
+           
             @if ($applied)
             <div class="alert alert-info">Already Applied</div>
             @else
@@ -51,7 +52,7 @@
                 </div>
             </form>
             @endif
-
+            @endauth
             @else
             <div class="alert alert-info">Login to apply</div>
             @endauth
