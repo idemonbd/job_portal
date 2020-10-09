@@ -62,7 +62,7 @@ class SiteController extends Controller
 
     public function seekReg(Request $request)
     {
-       return $request;
+    //    return $request;
        $request->validate([
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'password' => ['required', 'string', 'min:8', 'confirmed'],

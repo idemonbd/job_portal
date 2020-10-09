@@ -10,26 +10,26 @@
             <div class="menues">
                 <ul>
                     <li><a href="{{ url('/') }}">Home</a></li>
-                   @guest
-                   <li><a href="{{ url('seeker/resume/create') }}">Jobseeker</a></li>
-                   <li><a href="{{ url('employer/company/create') }}">Employer</a></li>
+                    @guest
+                    <li><a href="{{ url('seeker/resume/create') }}">Jobseeker</a></li>
+                    <li><a href="{{ url('employer/company/create') }}">Employer</a></li>
 
-                   @endguest
+                    @endguest
                 </ul>
             </div>
             <div class="menu_login_area">
+
                 <div class="dropdown bg-transparent">
+                    @guest
+                    <a class="" href="{{ route('login') }}">Login</a>
+                    @endguest
+                    @auth
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                       @auth
-                       <img src="{{ asset('public/storage'.Auth::user()->avater) }}" alt="..." class="rounded-circle"
-                       style="width: 32px">
-                       @endauth
+                        <img src="{{ url('public/storage/'.Auth::user()->picture) }}" alt="..." class="rounded-circle"
+                            style="width: 32px">
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        @guest
-                        <a class="dropdown-item" href="{{ route('login') }}">Login</a>
-                        @else
 
                         @if (Auth::user()->role == 'seeker')
                         <a class="dropdown-item" href="{{ url('seeker') }}">Dashboard</a>
@@ -48,7 +48,7 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
-                        @endguest
+                        @endauth
                     </div>
                 </div>
             </div>

@@ -23,23 +23,23 @@
                             <div class="create-resume_form">
                                 <div class="form-group">
                                     <label>Full Name *</label>
-                                    <input type="text" name="name">
+                                    <input type="text" name="name" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Father Name *</label>
-                                    <input type="text" name="father">
+                                    <input type="text" name="father" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Mother Name *</label>
-                                    <input type="text" name="mother">
+                                    <input type="text" name="mother" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Date of Birth *</label>
-                                    <input type="date" name="date_of_birth">
+                                    <input type="date" name="date_of_birth" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Gender *</label>
-                                    <select name="gender">
+                                    <select name="gender" required>
                                         <option>Female</option>
                                         <option>Male</option>
                                         <option>Other</option>
@@ -48,7 +48,7 @@
                                 <div class="form-group">
                                     <label>
                                         Separated Religion *</label>
-                                    <select name="religion">
+                                    <select name="religion" required>
                                         <option>islam</option>
                                         <option>himduism</option>
                                         <option>buddhi</option>
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Marital Status *</label>
-                                    <select name="marital_status">
+                                    <select name="marital_status" required>
                                         <option>married</option>
                                         <option>unmarried</option>
                                         <option>widowed</option>
@@ -70,18 +70,18 @@
                                 </div> --}}
                                 <div class="form-group">
                                     <label>Mobile No *</label>
-                                    <input type="text" name="mobile">
+                                    <input type="text" name="mobile" required>
                                 </div>
                                 <div class="form-group">
                                     <label>District *</label>
-                                    <select name="district">
+                                    <select name="district" required>
                                         <option>sylhet</option>
                                         <option>dhaka</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Present Address *</label>
-                                    <input type="text" name="address">
+                                    <input type="text" name="address" required>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                             <div class="create-resume_form">
                                 <div class="form-group">
                                     <label>Degree Name *</label>
-                                    <select name="degree_name">
+                                    <select name="degree_name" required>
                                         <option>hsc</option>
                                         <option>ssc</option>
                                         <option>bechelor</option>
@@ -98,30 +98,30 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Degree Title *</label>
-                                    <input type="text" name="degree_title">
+                                    <input type="text" name="degree_title" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Major *</label>
-                                    <input type="text" name="degree_major">
+                                    <input type="text" name="degree_major" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Institution Name *</label>
-                                    <input type="text" name="degree_institute">
+                                    <input type="text" name="degree_institute" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Course Type *</label>
-                                    <select name="degree_course_type">
+                                    <select name="degree_course_type" required>
                                         <option>ongoing</option>
                                         <option>complete</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Result</label>
-                                    <input type="text" name="degree_result">
+                                    <input type="text" name="degree_result" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Year Passed</label>
-                                    <input type="text" name="degree_passed_year">
+                                    <input type="text" name="degree_passed_year" required>
                                 </div>
                             </div>
                         </div>
@@ -130,26 +130,26 @@
                             <div class="create-resume_form">
                                 <div class="form-group">
                                     <label>Designation</label>
-                                    <input type="text" name="prof_designation">
+                                    <input type="text" name="prof_designation" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Company Name</label>
-                                    <input type="text" name="prof_company">
+                                    <input type="text" name="prof_company" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Job Start *</label>
-                                    <input type="date" name="prof_start">
+                                    <input type="date" name="prof_start" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Job Status</label>
-                                    <select name="prof_status">
+                                    <select name="prof_status" required>
                                         <option>status</option>
                                         <option>still continuing</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Job End *</label>
-                                    <input type="date" name="prof_end">
+                                    <input type="date" name="prof_end" required>
                                 </div>
                             </div>
                         </div>
@@ -158,19 +158,19 @@
                             <div class="create-resume_form">
                                 <div class="form-group">
                                     <label>Email *</label>
-                                    <input type="text" name="email">
+                                    <input type="text" name="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Password *</label>
-                                    <input type="password" name="password">
+                                    <input type="password" name="password" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Retype Password *</label>
-                                    <input type="password" name="password_confirmation">
+                                    <input type="password" name="password_confirmation" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Profile Image *</label>
-                                    <input type="file" name="picture" placeholder="choose image">
+                                    <input type="file" name="picture" placeholder="choose image" required>
                                 </div>
                             </div>
                         </div>
