@@ -26,7 +26,7 @@
                             <h6>My Profile</h6>
                         </div>
                         <div class="profile_top_right">
-                            <p><i class="fas fa-download"></i> Download CV</p>
+                            <p><a href="{{ url('seeker/profile/download') }}"><i class="fas fa-download"></i> Download CV</a></p>
                         </div>
                     </div>
                     <div class="profile_des">
