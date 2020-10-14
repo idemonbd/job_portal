@@ -18,6 +18,11 @@ class Job extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function applied()
+    {
+        return $this->hasOne(Apply::class);
+    }
+
 
 
 

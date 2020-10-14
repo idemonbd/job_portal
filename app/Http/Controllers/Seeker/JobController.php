@@ -19,38 +19,38 @@ class JobController extends Controller
     //     return view('front.job.index', compact('categories','jobs'));
     }
 
-    
+
     public function create()
     {
         //
     }
 
-    
+
     public function store(Request $request)
     {
        //
     }
 
-    
+
     public function show(Job $job)
     {
         // $jobs = Category::find($job->category->id)->jobs->skip($job->id);
         // return view('front.job.show', compact('job', 'jobs'));
     }
 
-    
+
     public function edit(Job $job)
     {
         //
     }
 
-    
+
     public function update(Request $request, Job $job)
     {
         //
     }
 
-    
+
     public function destroy(Job $job)
     {
         //

@@ -37,20 +37,11 @@
             </div>
             @auth
             @if (Auth::user()->role == 'seeker')
-           
+
             @if ($applied)
             <div class="alert alert-info">Already Applied</div>
             @else
-            <form action="{{ url('seeker/job/'.$job->id.'/apply') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="exp_salery">Expected Salery</label>
-                    <input type="text" name="exp_salery" class="form-control">
-                </div>
-                <div class="job_apply">
-                    <button class="btn btn-dark">Apply</button>
-                </div>
-            </form>
+            <button class="btn btn-dark" data-toggle="modal" data-target="#add_modal">Apply</button>
             @endif
             @endauth
             @else
@@ -97,5 +88,32 @@
             @endforeach
         </div>
     </div>
+</div>
+
+
+<div class="modal fade" id="add_modal" tabindex="-1" role="dialog" aria-labelledby=""
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="addCategoriesName">Apply</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <form action="{{ url('seeker/job/'.$job->id.'/apply') }}" method="POST">
+            @csrf
+            <div class="modal-body form-group">
+                <label for="exp_salery">Expected Salery</label>
+                <input type="text" name="exp_salery" class="form-control">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Apply</button>
+            </div>
+        </form>
+    </div>
+</div>
 </div>
 @endsection

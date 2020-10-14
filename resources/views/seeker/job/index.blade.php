@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 
-@section('main-content')
+@section('content')
 <!-- Start Header Banner Area -->
 <div class="jobs_banner_area">
     <div class="container">
@@ -15,14 +15,14 @@
         <div class="row no-gutters">
             <div class="col-md-2">
                 <div class="view_left">
-                    @include('users.jobseeker.partials.sidebar')
+                    @include('seeker.partials.sidebar')
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="view_right">
                     <div class="profile_des">
                         <div class="single_profile_box">
-                            <h6> My Applied Jobs (1)</h6>
+                            <h6> My Applied Jobs ({{ $jobs->count() }})</h6>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -34,13 +34,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>metro</td>
-                                        <td>cse</td>
-                                        <td>4.76</td>
-                                        <td>2020</td>
-                                    </tr>
+                                    @foreach ($jobs as $job)
+                                        <td>{{ $job->id }}</td>
+                                        <td>{{ $job->title }}</td>
+                                        <td>{{ $job->company }}</td>
+                                        <td>{{ $job->applied->exp_salery }}</td>
+                                        <td>{{ $job->created_at->format('d-m-Y') }}</td>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

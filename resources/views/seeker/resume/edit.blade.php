@@ -16,7 +16,7 @@
         <div class="row no-gutters">
             <div class="col-md-2">
                 <div class="view_left">
-                    @include('seeker.partials.sidebar')
+                    {{-- @include('seeker.partials.sidebar') --}}
                 </div>
             </div>
             <div class="col-md-10">

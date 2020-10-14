@@ -24,8 +24,8 @@ class SeekerController extends Controller
     public function applied()
     {
         $applied = Apply::where('user_id', Auth::id())->get()->pluck('job_id');
-       return $jobs = Job::find($applied);
-       return view('seeker.resume.edit', compact('jobs'));
+        $jobs = Job::find($applied);
+       return view('seeker.job.index', compact('jobs'));
     }
 
     public function download()
