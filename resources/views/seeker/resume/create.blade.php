@@ -70,7 +70,7 @@
                                 </div> --}}
                                 <div class="form-group">
                                     <label>Mobile No *</label>
-                                    <input type="text" name="mobile" required>
+                                    <input type="number" name="mobile" required>
                                 </div>
                                 <div class="form-group">
                                     <label>District *</label>
@@ -117,11 +117,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Result</label>
-                                    <input type="text" name="degree_result" required>
+                                    <input type="number" name="degree_result" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Year Passed</label>
-                                    <input type="text" name="degree_passed_year" required>
+                                    <input type="number" name="degree_passed_year" required>
                                 </div>
                             </div>
                         </div>

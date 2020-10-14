@@ -40,10 +40,10 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>Job Tags (optional)</label>
                                     <input type="text" name="tags">
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label>Description</label>
                                     <textarea name="description" class="form-control" rows="3"></textarea>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Salery</label>
-                                    <input type="text" name="salary">
+                                    <input type="number" name="salary">
                                 </div>
                                 <div class="form-group">
                                     <label>Company Logo</label>
