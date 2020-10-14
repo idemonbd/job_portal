@@ -26,19 +26,19 @@
                             <h6>My Profile</h6>
                         </div>
                         <div class="profile_top_right">
-                            <p><i class="fas fa-download"></i> download profile</p>
+                            <p><i class="fas fa-download"></i> Download CV</p>
                         </div>
                     </div>
                     <div class="profile_des">
                         <div class="single_profile_box flex2">
                             <div class="single_profile_box_left">
-                                <img src="../assets/images/pro.jpeg" alt="">
+                                <img src="{{ url('public/storage/'.$user->picture) }}">
                             </div>
                             <div class="single_profile_box_right">
-                                <h4>afsana</h4>
-                                <p><i class="fas fa-home"></i>abc</p>
-                                <p><i class="far fa-envelope"></i>abc@gmail.com</p>
-                                <p><i class="fas fa-phone"></i>017000000000</p>
+                                <h4>{{ $user->name }}</h4>
+                                <p><i class="fas fa-home"></i>{{ $user->address }}</p>
+                                <p><i class="far fa-envelope"></i>{{ $user->email }}</p>
+                                <p><i class="fas fa-phone"></i>{{ $user->mobile }}</p>
                             </div>
                         </div>
                         <div class="single_profile_box">
@@ -53,33 +53,16 @@
                                 <span>Fab 2017-Present(5year)</span>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero vero, dolores, officia quibusdam architecto sapiente eos voluptas odit ab veniam porro quae possimus itaque, quas! Tempora sequi nobis, atque incidunt!</p>
                             </div>
-                            <div class="single_child_box">
-                                <span class="ex-title">UI/UX Designer</span>
-                                <span>BANNANA INC.</span>
-                                <span>Fab 2017-Present(5year)</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero vero, dolores, officia quibusdam architecto sapiente eos voluptas odit ab veniam porro quae possimus itaque, quas! Tempora sequi nobis, atque incidunt!</p>
-                            </div>
                         </div>
                         <div class="single_profile_box">
                             <h6>EDUCATION</h6>
                             <div class="single_child_box">
-                                <span class="ex-title">Massachusetts Institute Of Technology</span>
-                                <span>Bachelor of Computer Science</span>
-                                <span>2010-2014</span>
-                                <span>4.88 (cse)</span>
+                                <span class="ex-title">{{ $user->degree_institute }}</span>
+                                <span>{{ $user->degree_title }}</span>
+                                <span>{{ $user->degree_passed_year }}</span>
+                                <span>{{ $user->degree_result }} ({{ $user->degree_major }})</span>
                             </div>
-                            <div class="single_child_box">
-                                <span class="ex-title">Massachusetts Institute Of Technology</span>
-                                <span>Bachelor of Computer Science</span>
-                                <span>2010-2014</span>
-                                <span>4.88 (cse)</span>
-                            </div>
-                            <div class="single_child_box">
-                                <span class="ex-title">Massachusetts Institute Of Technology</span>
-                                <span>Bachelor of Computer Science</span>
-                                <span>2010-2014</span>
-                                <span>4.88 (cse)</span>
-                            </div>
+
                         </div>
                         <div class="single_profile_box">
                             <h6>TRAINING</h6>
@@ -89,18 +72,7 @@
                                 <span>Institution - ds ( aS )</span>
                                 <span>Duration - 6</span>
                             </div>
-                            <div class="single_child_box">
-                                <span class="ex-title">Html</span>
-                                <p>Pictures, abstract symbols, materials, and colors are among the ingredients with which a</p>
-                                <span>Institution - ds ( aS )</span>
-                                <span>Duration - 6</span>
-                            </div>
-                            <div class="single_child_box">
-                                <span class="ex-title">Html</span>
-                                <p>Pictures, abstract symbols, materials, and colors are among the ingredients with which a</p>
-                                <span>Institution - ds ( aS )</span>
-                                <span>Duration - 6</span>
-                            </div>
+
                         </div>
                         <div class="single_profile_box">
                             <h6>ACHIEVMENT</h6>
@@ -108,14 +80,7 @@
                                 <p>Pictures, abstract symbols, materials, and colors are among the ingredients with which a</p>
                                 <span>Duration - 6</span>
                             </div>
-                            <div class="single_child_box">
-                                <p>Pictures, abstract symbols, materials, and colors are among the ingredients with which a</p>
-                                <span>Duration - 6</span>
-                            </div>
-                            <div class="single_child_box">
-                                <p>Pictures, abstract symbols, materials, and colors are among the ingredients with which a</p>
-                                <span>Duration - 6</span>
-                            </div>
+
                         </div>
                         <div class="single_profile_box">
                             <h6>PERSONAL</h6>
@@ -124,27 +89,27 @@
                                     <tbody>
                                         <tr>
                                             <th scope="col">Fathers Name</th>
-                                            <td>kar</td>
+                                            <td>{{ $user->father}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">Mothers Name</th>
-                                            <td>kar</td>
+                                            <td>{{ $user->father}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">Date of Birth</th>
-                                            <td>1997-11-2</td>
+                                            <td>{{ $user->date_of_birth}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">Gender</th>
-                                            <td>Female</td>
+                                            <td>{{ $user->gender}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">Marital Status</th>
-                                            <td>Unmarried</td>
+                                            <td>{{ $user->marital_status}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">Religion</th>
-                                            <td>Hinduism</td>
+                                            <td>{{ $user->religion}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">NID No</th>

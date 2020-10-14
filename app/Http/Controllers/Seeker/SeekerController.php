@@ -11,7 +11,8 @@ class SeekerController extends Controller
 
     public function index()
     {
-       return view('seeker.resume.show');
+        $user = Auth::user();
+       return view('seeker.resume.show',compact('user'));
     }
 
     public function edit()
