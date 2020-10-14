@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Job;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -21,5 +23,12 @@ class AdminController extends Controller
     {
         return view('admin.profile');
     }
-    
+
+    public function profileUpdate(Request $request)
+    {
+        $user = Auth::user();
+        $user->update($request->all());
+        return redirect()->back()->with('success','Information Updated');
+    }
+
 }

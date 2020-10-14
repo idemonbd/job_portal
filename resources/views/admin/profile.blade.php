@@ -22,29 +22,30 @@
                 <div class="edit_resume_area">
                     <div class="container">
                         <div class="tab-content" id="myTabContent">
-                            <div>
-                                <div class="create-resume_form">
-                                    <div class="form-group">
-                                        <label>Name *</label>
-                                        <input type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email *</label>
-                                        <input type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Company Mobile No *</label>
-                                        <input type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Address *</label>
-                                        <input type="text">
-                                    </div>
+                           <form action="{{ url('admin/profile') }}" method="POST">
+                            @csrf
+                            <div class="create-resume_form">
+                                <div class="form-group">
+                                    <label>Name *</label>
+                                    <input type="text" value="{{ Auth::user()->name }}" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email *</label>
+                                    <input type="email" value="{{ Auth::user()->email }}" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Company Mobile No *</label>
+                                    <input type="number" value="{{ Auth::user()->mobile }}" name="mobile">
+                                </div>
+                                <div class="form-group">
+                                    <label>Address *</label>
+                                    <input type="text" value="{{ Auth::user()->address }}" name="address">
                                 </div>
                             </div>
                             <div class="job_apply">
-                                <p><a href="#">Update</a></p>
+                                <input class="btn btn-secondary" type="submit" value="Update">
                             </div>
+                        </form>
                         </div>
                     </div>
                 </div>

@@ -33,7 +33,8 @@ use Illuminate\Support\Facades\Route;
         // navigation
         Route::middleware(['verified'])->get('/','AdminController@dashboard');
         Route::get('profile','AdminController@profile');
-        
+        Route::post('profile','AdminController@profileUpdate');
+
         // Restfull Controller| Category | degere | job
         Route::resource('category', 'CategoryController');
         Route::resource('degree', 'DegreeController');
@@ -54,7 +55,7 @@ use Illuminate\Support\Facades\Route;
 
 ///////////// Employer Routes//////////////////
 Route::group(['prefix' => '/employer','namespace' => 'employer', 'middleware' => ['auth','verified']], function () {
-        
+
     Route::get('/','SiteController@index');
     Route::get('job/applied', 'JobController@applied');
     Route::resource('job', 'JobController');
@@ -68,7 +69,7 @@ Route::group(['prefix' => '/employer','namespace' => 'employer', 'middleware' =>
 
 ///////////// Seeker Routes //////////////////
     Route::group(['prefix' => '/seeker','namespace' => 'Seeker','middleware' => ['auth','verified']], function () {
-        
+
         Route::get('/','SeekerController@index');
         Route::get('/profile/edit','SeekerController@edit');
         Route::get('/applied','SeekerController@applied');
