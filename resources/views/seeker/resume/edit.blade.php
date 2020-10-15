@@ -142,10 +142,12 @@
                             </form>
                             </div>
                             <div class="tab-pane fade" id="Education" role="tabpanel" aria-labelledby="Education-tab">
+                                <form action="{{ url('seeker/profile/degree') }}" method="POST">
+                                    @csrf
                                 <div class="create-resume_form">
                                     <div class="form-group">
                                         <label>Degree Name *</label>
-                                        <select>
+                                        <select name="name" required>
                                             <option>hsc</option>
                                             <option>ssc</option>
                                             <option>bechelor</option>
@@ -153,35 +155,36 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Degree Title *</label>
-                                        <input type="text">
+                                        <input name="title" type="text" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Major *</label>
-                                        <input type="text">
+                                        <input name="major" type="text" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Institution Name *</label>
-                                        <input type="date">
+                                        <input name="inst" type="text" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Course Type *</label>
-                                        <select>
+                                        <select name="course_type" required>
                                             <option>ongoing</option>
                                             <option>complete</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Result</label>
-                                        <input type="text">
+                                        <input name="result" type="text" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Year Passed</label>
-                                        <input type="text">
+                                        <input name="passed" type="number" required>
                                     </div>
                                     <div class="job_apply">
-                                        <p><a href="#">add</a></p>
+                                        <input type="submit" class="btn btn-secondary" value="Add">
                                     </div>
                                 </div>
+                                </form>
                                 <div class="view_edit_form">
                                     <table class="table table-bordered">
                                         <thead>
@@ -190,27 +193,35 @@
                                                 <th scope="col">Degree Title</th>
                                                 <th scope="col">Institution</th>
                                                 <th scope="col">Major</th>
-                                                <th scope="col">Result</th>
-                                                <th scope="col">Semester</th>
-                                                <th scope="col">Pass</th>
+                                                {{-- <th scope="col">Semester</th> --}}
+                                                <th scope="col">Passed</th>
                                                 <th scope="col">Status</th>
-                                                <th scope="col">Pass</th>
+                                                <th scope="col">Result</th>
+                                                {{-- <th scope="col">Pass</th> --}}
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach (\App\Degree::where('user_id',Auth::id())->get() as $degree)
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>masters</td>
-                                                <td>metro</td>
-                                                <td>cse</td>
-                                                <td>4.76</td>
-                                                <td>2020</td>
-                                                <td>2020</td>
-                                                <td>Ongoing</td>
-                                                <td>cse</td>
+                                                <th scope="row">{{ $degree->id }}</th>
+                                                {{-- <td>{{ $degree->name }}</td> --}}
+                                                <td>{{ $degree->title }}</td>
+                                                <td>{{ $degree->inst }}</td>
+                                                <td>{{ $degree->major }}</td>
+                                                <td>{{ $degree->passed }}</td>
+                                                <td>{{ $degree->course_type }}</td>
+                                                <td>{{ $degree->result }}</td>
+                                                <td>
+                                                    <form action="{{ url('seeker/profile/degree/'.$degree->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <input type="submit" class="btn btn-secondary" value="Delete">
+                                                    </form>
+                                                </td>
                                                 <td></td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

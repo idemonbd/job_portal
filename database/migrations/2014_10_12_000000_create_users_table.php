@@ -53,7 +53,7 @@ class CreateUsersTable extends Migration
             $table->string('prof_start')->nullable();
             $table->string('prof_status')->nullable();
             $table->string('prof_end')->nullable();
-            
+
             // for employer - company details
             $table->string('company_name')->nullable();
             $table->string('company_email')->nullable();

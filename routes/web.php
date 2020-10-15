@@ -73,6 +73,8 @@ Route::group(['prefix' => '/employer','namespace' => 'employer', 'middleware' =>
         Route::get('/','SeekerController@index');
         Route::get('/profile/edit','SeekerController@edit');
         Route::post('/profile','SeekerController@update');
+        Route::resource('profile/degree','DegreeController');
+
         Route::get('/profile/download','SeekerController@download');
         Route::get('/applied','SeekerController@applied');
         Route::resource('job', 'JobController');

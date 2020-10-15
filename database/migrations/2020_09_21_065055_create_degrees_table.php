@@ -15,7 +15,15 @@ class CreateDegreesTable extends Migration
     {
         Schema::create('degrees', function (Blueprint $table) {
             $table->id();
+            $table->string('type')->default('user');
+            $table->integer('user_id')->nullable();
             $table->string('name');
+            $table->string('title');
+            $table->string('major');
+            $table->string('inst');
+            $table->string('course_type');
+            $table->float('result');
+            $table->integer('passed');
             $table->timestamps();
         });
     }
