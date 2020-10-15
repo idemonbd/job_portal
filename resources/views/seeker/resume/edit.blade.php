@@ -53,26 +53,30 @@
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="Personal" role="tabpanel" aria-labelledby="Personal-tab">
-                                <div class="create-resume_form">
+                                <form action="{{ url('seeker/profile') }}" method="POST">
+                                    @csrf
+                                    <div class="create-resume_form">
+
+
                                     <div class="form-group">
                                         <label>Full Name *</label>
-                                        <input type="text">
+                                        <input name="name" value="{{ $user->name }}" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label>Father Name *</label>
-                                        <input type="text">
+                                        <input name="father" value="{{ $user->father }}" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label>Mother Name *</label>
-                                        <input type="text">
+                                        <input name="mother" value="{{ $user->mother }}" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label>Date of Birth *</label>
-                                        <input type="date">
+                                        <input name="date_of_birth" value="{{ $user->date_of_birth }}" type="date">
                                     </div>
                                     <div class="form-group">
                                         <label>Gender *</label>
-                                        <select>
+                                        <select name="gender">
                                             <option>Female</option>
                                             <option>Male</option>
                                             <option>Other</option>
@@ -80,7 +84,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label> Religion *</label>
-                                        <select>
+                                        <select name="religion">
                                             <option>islam</option>
                                             <option>himduism</option>
                                             <option>buddhi</option>
@@ -89,7 +93,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Marital Status *</label>
-                                        <select>
+                                        <select name="marrital_status">
                                             <option>married</option>
                                             <option>unmarried</option>
                                             <option>widowed</option>
@@ -98,43 +102,44 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Email *</label>
-                                        <input type="text">
+                                        <input name="email" value="{{ $user->email }}" type="email">
                                     </div>
                                     <div class="form-group">
                                         <label>Mobile No *</label>
-                                        <input type="text">
+                                        <input name="mobile" value="{{ $user->mobile }}" type="number">
                                     </div>
                                     <div class="form-group">
                                         <label>District *</label>
-                                        <select>
+                                        <select name="district">
                                             <option>sylhet</option>
                                             <option>dhaka</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Present Address *</label>
-                                        <input type="text">
+                                        <input name="address" value="{{ $user->address }}" type="text">
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label>National ID </label>
                                         <input type="text">
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
                                         <label>Facebook ID </label>
-                                        <input type="text">
+                                        <input name="company_facebook" value="{{ $user->company_facebook }}" type="text">
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label>User Name *</label>
                                         <input type="text">
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
                                         <label>Career Objective *</label>
-                                        <textarea cols="45" rows="5"></textarea>
+                                        <textarea name="objective" cols="45" rows="5">{{ $user->objective }}</textarea>
                                     </div>
                                     <div class="job_apply">
-                                        <p><a href="#">update</a></p>
+                                        <input type="submit" value="Update" class="btn btn-secondary">
                                     </div>
                                 </div>
+                            </form>
                             </div>
                             <div class="tab-pane fade" id="Education" role="tabpanel" aria-labelledby="Education-tab">
                                 <div class="create-resume_form">

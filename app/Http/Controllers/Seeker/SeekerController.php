@@ -5,6 +5,7 @@ use App\Job;
 use App\Apply;
 use Dompdf\Dompdf;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class SeekerController extends Controller
@@ -18,7 +19,15 @@ class SeekerController extends Controller
 
     public function edit()
     {
-       return view('seeker.resume.edit');
+        $user = Auth::user();
+       return view('seeker.resume.edit',compact('user'));
+    }
+
+    public function update(Request $request)
+    {
+        // return $request->all();
+        Auth::user()->update($request->all());
+       return redirect()->back()->with('success','Information Updated successfully');
     }
 
     public function applied()
