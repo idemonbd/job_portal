@@ -72,8 +72,12 @@ Route::group(['prefix' => '/employer','namespace' => 'employer', 'middleware' =>
 
         Route::get('/','SeekerController@index');
         Route::get('/profile/edit','SeekerController@edit');
+        Route::post('profile/password/change','SeekerController@password');
         Route::post('/profile','SeekerController@update');
         Route::resource('profile/degree','DegreeController');
+        Route::resource('profile/experience','ExperienceController');
+        Route::resource('profile/training','TrainingController');
+        Route::resource('profile/achivement','AchivementController');
 
         Route::get('/profile/download','SeekerController@download');
         Route::get('/applied','SeekerController@applied');

@@ -32,39 +32,39 @@
                     <div class="profile_des">
                         <div class="single_profile_box flex2">
                             <div class="single_profile_box_left">
-                                <img src="{{ url('public/storage/'.$user->picture) }}">
+                                <img src="{{ url('public/storage/'.Auth::user()->picture) }}">
                             </div>
                             <div class="single_profile_box_right">
-                                <h4>{{ $user->name }}</h4>
-                                <p><i class="fas fa-home"></i>{{ $user->address }}</p>
-                                <p><i class="far fa-envelope"></i>{{ $user->email }}</p>
-                                <p><i class="fas fa-phone"></i>{{ $user->mobile }}</p>
+                                <h4>{{ Auth::user()->name }}</h4>
+                                <p><i class="fas fa-home"></i>{{ Auth::user()->address }}</p>
+                                <p><i class="far fa-envelope"></i>{{ Auth::user()->email }}</p>
+                                <p><i class="fas fa-phone"></i>{{ Auth::user()->mobile }}</p>
                             </div>
                         </div>
                         <div class="single_profile_box">
                             <h6>OBJECTIVE</h6>
-                            <p>{{ $user->objective }}</p>
+                            <p>{{ Auth::user()->objective }}</p>
                         </div>
                         <div class="single_profile_box">
                             <h6>WORK EXPERIENCE</h6>
-                            @foreach ($experiences as $item)
+                            @foreach (\App\Experience::where('user_id',Auth::id())->get() as $item)
                             <div class="single_child_box">
-                                <span class="ex-title">UI/UX Designer</span>
-                                <span>BANNANA INC.</span>
-                                <span>Fab 2017-Present(5year)</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero vero, dolores, officia quibusdam architecto sapiente eos voluptas odit ab veniam porro quae possimus itaque, quas! Tempora sequi nobis, atque incidunt!</p>
+                                <span class="ex-title">{{ $item->designation }}</span>
+                                <span>{{ $item->company }}</span>
+                                <span>{{$item->start->format('d M, Y')}} to {{ $item->end->format('d M, Y') }}</span>
+                                <p>{{ $item->responsibility }}</p>
                             </div>
                             @endforeach
                         </div>
                         <div class="single_profile_box">
                             <h6>EDUCATION</h6>
                             <div class="single_child_box">
-                                <span class="ex-title">{{ $user->degree_institute }}</span>
-                                <span>{{ $user->degree_title }}</span>
-                                <span>{{ $user->degree_passed_year }}</span>
-                                <span>{{ $user->degree_result }} ({{ $user->degree_major }})</span>
+                                <span class="ex-title">{{ Auth::user()->degree_institute }}</span>
+                                <span>{{ Auth::user()->degree_title }}</span>
+                                <span>{{ Auth::user()->degree_passed_year }}</span>
+                                <span>{{ Auth::user()->degree_result }} ({{ Auth::user()->degree_major }})</span>
                             </div>
-                            @foreach ($user->degrees as $degree)
+                            @foreach (Auth::user()->degrees as $degree)
                             <div class="single_child_box">
                                 <span class="ex-title">{{ $degree->institute }}</span>
                                 <span>{{ $degree->title }}</span>
@@ -74,24 +74,26 @@
                             @endforeach
 
                         </div>
-                        <div class="single_profile_box">
-                            <h6>TRAINING</h6>
-                            <div class="single_child_box">
-                                <span class="ex-title">Html</span>
-                                <p>Pictures, abstract symbols, materials, and colors are among the ingredients with which a</p>
-                                <span>Institution - ds ( aS )</span>
-                                <span>Duration - 6</span>
-                            </div>
 
+                        @foreach (\App\Training::where('user_id',Auth::id())->get() as $training)
+                        <h6>TRAINING</h6>
+                        <div class="single_child_box">
+                            <span class="ex-title">{{ $training->title }}</span>
+                            <p>{{ $training->details }}</p>
+                            <span>{{ $training->inst }}</span>
+                            <span>{{ $training->duration }}</span>
                         </div>
-                        <div class="single_profile_box">
-                            <h6>ACHIEVMENT</h6>
-                            <div class="single_child_box">
-                                <p>Pictures, abstract symbols, materials, and colors are among the ingredients with which a</p>
-                                <span>Duration - 6</span>
-                            </div>
+                        @endforeach
 
+                        @foreach (\App\Achivement::where('user_id',Auth::id())->get() as $item)
+                        <h6>ACHIEVMENT</h6>
+                        <div class="single_child_box">
+                            <div class="single_child_box">
+                                <p>{{$item->name}}</p>
+                            </div>
                         </div>
+                        @endforeach
+
                         <div class="single_profile_box">
                             <h6>PERSONAL</h6>
                             <div class="single_child_box">
@@ -99,27 +101,27 @@
                                     <tbody>
                                         <tr>
                                             <th scope="col">Fathers Name</th>
-                                            <td>{{ $user->father}}</td>
+                                            <td>{{ Auth::user()->father}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">Mothers Name</th>
-                                            <td>{{ $user->father}}</td>
+                                            <td>{{ Auth::user()->father}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">Date of Birth</th>
-                                            <td>{{ $user->date_of_birth}}</td>
+                                            <td>{{ Auth::user()->date_of_birth}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">Gender</th>
-                                            <td>{{ $user->gender}}</td>
+                                            <td>{{ Auth::user()->gender}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">Marital Status</th>
-                                            <td>{{ $user->marital_status}}</td>
+                                            <td>{{ Auth::user()->marital_status}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">Religion</th>
-                                            <td>{{ $user->religion}}</td>
+                                            <td>{{ Auth::user()->religion}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">NID No</th>
