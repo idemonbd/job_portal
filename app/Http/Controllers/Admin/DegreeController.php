@@ -15,7 +15,7 @@ class DegreeController extends Controller
      */
     public function index()
     {
-        $degrees = Degree::all();
+        $degrees = Degree::whereNull('user_id')->get();
         return view('admin.degree.index', compact('degrees'));
     }
 

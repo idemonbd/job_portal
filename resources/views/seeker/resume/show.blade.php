@@ -43,16 +43,18 @@
                         </div>
                         <div class="single_profile_box">
                             <h6>OBJECTIVE</h6>
-                            <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi umsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
+                            <p>{{ $user->objective }}</p>
                         </div>
                         <div class="single_profile_box">
                             <h6>WORK EXPERIENCE</h6>
+                            @foreach ($experiences as $item)
                             <div class="single_child_box">
                                 <span class="ex-title">UI/UX Designer</span>
                                 <span>BANNANA INC.</span>
                                 <span>Fab 2017-Present(5year)</span>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero vero, dolores, officia quibusdam architecto sapiente eos voluptas odit ab veniam porro quae possimus itaque, quas! Tempora sequi nobis, atque incidunt!</p>
                             </div>
+                            @endforeach
                         </div>
                         <div class="single_profile_box">
                             <h6>EDUCATION</h6>
@@ -62,6 +64,14 @@
                                 <span>{{ $user->degree_passed_year }}</span>
                                 <span>{{ $user->degree_result }} ({{ $user->degree_major }})</span>
                             </div>
+                            @foreach ($user->degrees as $degree)
+                            <div class="single_child_box">
+                                <span class="ex-title">{{ $degree->institute }}</span>
+                                <span>{{ $degree->title }}</span>
+                                <span>{{ $degree->passed }}</span>
+                                <span>{{ $degree->result }} ({{ $degree->major }})</span>
+                            </div>
+                            @endforeach
 
                         </div>
                         <div class="single_profile_box">
